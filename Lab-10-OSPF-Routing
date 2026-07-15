@@ -1,0 +1,137 @@
+# Lab 10 - OSPF Routing
+
+## Objective
+
+To configure OSPF (Open Shortest Path First) between two routers and establish dynamic routing for communication between different networks.
+
+---
+
+## Devices Used
+
+- 2 Cisco 1941 Routers
+- 2 Cisco 2960 Switches
+- 2 PCs
+
+---
+
+## Network Topology
+
+- R1
+- R2
+- SW1
+- SW2
+- PC1
+- PC2
+
+Two LANs were connected through two routers. OSPF Area 0 was configured to dynamically exchange routing information.
+
+---
+
+## IP Addressing
+
+### LAN 1
+
+Network: 192.168.1.0/24
+
+Gateway: 192.168.1.1
+
+### LAN 2
+
+Network: 192.168.2.0/24
+
+Gateway: 192.168.2.1
+
+### Router-to-Router Link
+
+Network: 10.0.0.0/30
+
+R1: 10.0.0.1
+
+R2: 10.0.0.2
+
+---
+
+## OSPF Configuration
+
+### R1
+
+```text
+router ospf 1
+router-id 1.1.1.1
+
+network 192.168.1.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.3 area 0
+```
+
+### R2
+
+```text
+router ospf 1
+router-id 2.2.2.2
+
+network 192.168.2.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.3 area 0
+```
+
+---
+
+## Verification
+
+The following commands were used to verify the configuration:
+
+```text
+show ip ospf neighbor
+
+show ip route
+
+show ip protocols
+
+ping
+```
+
+The OSPF neighbor relationship was successfully established, the routing table displayed OSPF-learned routes (`O`), and end-to-end connectivity was verified using the ping command.
+
+---
+
+## Learning Outcome
+
+After completing this lab, I learned:
+
+- OSPF Version 2 configuration
+- Router ID configuration
+- OSPF Area 0 configuration
+- Wildcard mask usage
+- OSPF neighbor establishment
+- Dynamic route learning
+- OSPF route verification
+- End-to-end communication using OSPF
+
+---
+
+## Files Included
+
+- README.md
+- lab10-ospf-routing.pkt
+- lab10-topology.png
+- lab10-ping-success.png
+- lab10-ospf-protocol.png
+
+---
+
+## Troubleshooting
+
+- Verified interface status using `show ip interface brief`
+- Verified OSPF neighbors using `show ip ospf neighbor`
+- Verified routing table using `show ip route`
+- Verified OSPF configuration using `show ip protocols`
+- Verified connectivity using the `ping` command
+
+---
+
+## Author
+
+**SRINAVEEN S**
+
+BE Electronics and Communication Engineering
+
+Building My Network Engineering Portfolio
