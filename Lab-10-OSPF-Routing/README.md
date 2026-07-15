@@ -1,0 +1,78 @@
+# Lab 10 - OSPF Routing
+
+## Objective
+
+Configure OSPF between two routers and establish dynamic routing for communication between different networks.
+
+---
+
+## Devices Used
+
+- 2 Cisco 1941 Routers
+- 2 Cisco 2960 Switches
+- 2 PCs
+
+---
+
+## OSPF Configuration
+
+### Router R1
+
+```text
+router ospf 1
+router-id 1.1.1.1
+
+network 192.168.1.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.3 area 0
+```
+
+### Router R2
+
+```text
+router ospf 1
+router-id 2.2.2.2
+
+network 192.168.2.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.3 area 0
+```
+
+---
+
+## Verification Commands
+
+```text
+show ip ospf neighbor
+show ip route
+show ip protocols
+ping
+```
+
+---
+
+## Results
+
+- OSPF neighbors established successfully.
+- Dynamic routes learned through OSPF.
+- End-to-end connectivity verified using the ping command.
+
+---
+
+## Files Included
+
+- README.md
+- lab10-ospf-routing.pkt
+- lab10-topology.png
+- lab10-routing-table.png
+- lab10-ping-success.png
+
+---
+
+## Author
+
+**SRINAVEEN S**
+
+BE Electronics and Communication Engineering
+
+Aspiring Network & Telecom Engineer
+
+Building practical networking skills through hands-on labs and real-world troubleshooting.
