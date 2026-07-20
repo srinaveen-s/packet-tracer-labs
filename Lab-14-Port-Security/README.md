@@ -84,11 +84,8 @@ show running-config
 ## 📸 Screenshots
 
 - Network Topology
-- Port Security Configuration
-- Sticky MAC Address
-- Port Security Status
-- Violation Detection (Err-Disabled)
-- Verification Commands
+- Port Security Violation
+- Ping Test Verification
 
 ---
 
