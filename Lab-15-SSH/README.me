@@ -1,0 +1,142 @@
+# Lab 15 - Secure Shell (SSH)
+
+## 🎯 Objective
+
+The objective of this lab is to configure Secure Shell (SSH) on a Cisco router and securely access the router from a PC using encrypted remote login.
+
+---
+
+## 🛠️ Devices Used
+
+- 1 Cisco 1941 Router
+- 1 Cisco 2960 Switch
+- 1 PC
+
+---
+
+## 🌐 Network Topology
+
+```
+      R1
+       |
+      SW1
+       |
+      PC1
+```
+
+---
+
+## 📋 IP Addressing
+
+| Device | Interface | IP Address | Subnet Mask |
+|---------|-----------|------------|-------------|
+| R1 | G0/0 | 192.168.1.1 | 255.255.255.0 |
+| PC1 | NIC | 192.168.1.10 | 255.255.255.0 |
+
+**Default Gateway:** `192.168.1.1`
+
+---
+
+## ⚙️ Configuration Summary
+
+### Configure Router Interface
+
+```bash
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+```
+
+---
+
+### Configure SSH
+
+```bash
+hostname R1
+
+ip domain-name lab.local
+
+username admin secret Cisco123
+
+crypto key generate rsa
+```
+
+Choose:
+
+```text
+1024
+```
+
+Continue with:
+
+```bash
+ip ssh version 2
+
+line vty 0 4
+login local
+transport input ssh
+```
+
+Save the configuration:
+
+```bash
+end
+
+write
+```
+
+---
+
+## ✅ Verification
+
+Verify SSH status:
+
+```bash
+show ip ssh
+```
+
+Verify configuration:
+
+```bash
+show running-config
+```
+
+Connect from the PC:
+
+```bash
+ssh -l admin 192.168.1.1
+```
+
+---
+
+## 📸 Screenshots
+
+- Network Topology
+- SSH Configuration
+- SSH Status (`show ip ssh`)
+- Successful SSH Login
+
+---
+
+## 📚 Key Learning Outcomes
+
+- Configured SSH on a Cisco router.
+- Generated RSA keys for encrypted communication.
+- Created a local user for authentication.
+- Enabled SSH Version 2.
+- Configured VTY lines to allow only SSH access.
+- Verified secure remote login from a client PC.
+
+---
+
+## ✅ Result
+
+Successfully configured and verified Secure Shell (SSH) on a Cisco router. Remote access was established securely from the PC using SSH authentication, demonstrating encrypted remote device management.
+
+---
+
+# 👨‍💻 Author
+
+**Srinaveen S**
+
+Passionate Electronics and Communication Engineering student with a strong interest in Computer Networks, Cisco Networking, and Network Security. This lab was created as part of my hands-on networking practice using Cisco Packet Tracer to strengthen practical networking skills.
